@@ -1,0 +1,49 @@
+name: recall
+version: "1.0"
+author: Matthew Blode <m@blode.co>
+about: A flashcard CLI.
+subcommands:
+    - add:
+        about: Add a new card.
+        args:
+        - question:
+            short: q
+            long: question
+            help: Content of the front of card.
+            takes_value: true
+            required: true
+        - answer:
+            short: a
+            long: answer
+            help: Content of the back of card.
+            takes_value: true
+            required: true
+        - deck:
+            short: d
+            long: deck
+            help: Deck name or id that the card is under.
+            takes_value: true
+            required: true
+    - browse:
+        about: Browse cards.
+        args:
+            - deck:
+                short: d
+                long: deck
+                help: Deck name or id.
+                takes_value: true
+    - decks:
+        about: View flashcard deck.
+        args:
+            - deck:
+                short: d
+                long: deck
+                help: Deck name or id.
+                takes_value: true
+                required: true
+    - new:
+        about: Creates a new deck.
+        args:
+            - name:
+                required: true
+                help: Name of your deck.
