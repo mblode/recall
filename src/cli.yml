@@ -47,3 +47,5 @@ subcommands:
             - name:
                 required: true
                 help: Name of your deck.
+    - init:
+        about: Initialise Recall.

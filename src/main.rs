@@ -2,12 +2,17 @@
 extern crate clap;
 use clap::App;
 
+#[macro_use]
+extern crate serde_derive;
+extern crate serde;
+
 use exitfailure::ExitFailure;
 use failure::ResultExt;
 
 mod add;
 mod browse;
 mod decks;
+mod init;
 mod new;
 
 fn main() -> Result<(), ExitFailure> {
@@ -16,16 +21,19 @@ fn main() -> Result<(), ExitFailure> {
 
     match matches.subcommand() {
         ("add", Some(matches)) => {
-            add::add_card(matches.value_of("name").unwrap())?;
+            add::add_card(matches.value_of("name"))?;
         }
         ("browse", Some(_matches)) => {
-            browse::browse_decks(matches.value_of("name").unwrap())?;
+            browse::browse_decks(matches.value_of("name"))?;
         }
         ("decks", Some(matches)) => {
-            decks::new_site(matches.value_of("name").unwrap())?;
+            decks::view_deck(matches.value_of("name"))?;
+        }
+        ("init", Some(_matches)) => {
+            init::init_recall()?;
         }
         ("new", Some(_matches)) => {
-            new::new_site(matches.value_of("name").unwrap())?;
+            new::new_deck(matches.value_of("name"))?;
         }
         _ => unreachable!()
     }

@@ -1,22 +1,16 @@
-use std::fs::{canonicalize, create_dir};
-use std::path::Path;
-use std::fs::File;
-use std::io::Write;
-
 use exitfailure::ExitFailure;
 use failure::ResultExt;
 
-pub fn create_file(path: &Path, content: &str) -> Result<(), ExitFailure> {
-    let mut file = File::create(&path)
-        .with_context(|_| format!("Failed to create file"))?;
-    file.write_all(content.as_bytes())?;
-    Ok(())
-}
-
-pub fn new_deck (name: &str) -> Result<(), ExitFailure> {
-    let path = Path::new(name);
-
-    create_file(&path.join("recall.json"), &config)?;
+pub fn new_deck (name: Option<&str>) -> Result<(), ExitFailure> {
+    let data = r#"
+        {
+            "name": "John Doe",
+            "age": 43,
+            "phones": [
+                "+44 1234567",
+                "+44 2345678"
+            ]
+        }"#;
 
     Ok(())
 }
