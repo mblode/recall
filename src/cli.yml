@@ -9,13 +9,13 @@ subcommands:
         - question:
             short: q
             long: question
-            help: Content of the front of card.
+            help: Content on the front of card.
             takes_value: true
             required: true
         - answer:
             short: a
             long: answer
-            help: Content of the back of card.
+            help: Content on the back of card.
             takes_value: true
             required: true
         - bidir:
@@ -30,3 +30,5 @@ subcommands:
                 required: true
     - learn:
         about: Start learning your flashcards.
+    - status:
+        about: Status of the flashcards.
